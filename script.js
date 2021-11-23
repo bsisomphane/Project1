@@ -15,9 +15,8 @@ fetch(cityCoords, {
   })
   .then(function (airNowData) {
       return airNowData.json();
+  })
+  .then(function (airNowJson) {
+      console.log(airNowJson);
   });
-//   .then(function (airNowData) {
-//       console.log("This is the air now data.");
-//       console.log(airNowData);
-//   });
 
