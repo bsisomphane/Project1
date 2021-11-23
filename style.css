@@ -1,0 +1,22 @@
+:root {
+    --background: #03045e;
+    --backgroundBox: #0077b6;
+    --mainText: #90e0ef;
+    --bodyText: #caf0f8;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--mainText);
+}
+
+.row {
+    text-align: center;
+    padding: 25px;
+}
+
+.container {
+    padding: 10px;
+    border-radius: 1px;
+    border: ivory;
+}
