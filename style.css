@@ -15,13 +15,12 @@ h1 {
     padding: 10px;
 }
 
-.row {
-    padding: 25px;
-}
-
-.col {
+.select-card {
     background-color: var(--backgroundBox);
-    color: var(--bodyText);
-    border: 25px solid var(--backgroundBox);
+    padding: 20px;
+    margin: 10px 100px 20px;
 }
 
+.card {
+    color:var(--background)
+}
