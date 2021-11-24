@@ -12,8 +12,9 @@ citySubmitBtn.addEventListener("click", function(event){
 
 // Hooking into user input for the city name to populate fetch url
 function citySearch () {
-  console.log("This is the city search Test");
-  let userCity = document.querySelector("#city-text").value;
+  // let userCity = document.querySelector(".form-select").value;
+  let userCity = "London, UK";
+  console.log(`This is the city search Test. The value searched is ${userCity}.`);
   if (!userCity) {
     console.error('Please enter a location to search');
     return;
@@ -42,16 +43,22 @@ function apiSearch (userCity) {
 }
 
 function populateLMS(hotelData) {
-  for (let i = 0; i < hotelData.suggestions[2].entities.length; i++) {
-    const landmarks = hotelData.suggestions[2].entities[i].name;
-    console.log(landmarks);
-  }
   let cityName = document.querySelector(".city-name");
   let cityLM = document.querySelector(".city-lm");
   cityName.innerHTML = hotelData.term;
   console.log("City and Country populated.");
-  cityLM.innerHTML = hotelData.landmarks;
-  console.log(hotelData.landmarks);
+  for (let i = 0; i < hotelData.suggestions[2].entities.length; i++) {
+    const landmark = hotelData.suggestions[2].entities[i].name;
+    console.log(landmark);
+    let landmarkP = document.createElement("p");
+    let landmarkText = document.createTextNode(landmark);
+    node.appendChild(textnode);
+    cityLM.appendChild(node);
+    
+    cityLM.appendChild = hotelData.landmarks;
+    console.log(hotelData.landmarks);
+    console.log("Landmark populated");
+  }
 }
 
 
