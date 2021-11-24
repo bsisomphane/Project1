@@ -20,8 +20,8 @@ h1 {
 }
 
 .col {
-    text-align: center;
     background-color: var(--backgroundBox);
     color: var(--bodyText);
     border: 25px solid var(--backgroundBox);
 }
+
