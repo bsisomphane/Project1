@@ -22,5 +22,13 @@ h1 {
 }
 
 .card {
-    color:var(--background)
+    color:var(--background);
+    padding: 20px;
+    margin: 10px 100px 20px;
+}
+
+.btn {
+    margin-top: 5px;
+    background-color: var(--background);
+    color: var(--bodyText);
 }
