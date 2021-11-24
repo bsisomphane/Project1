@@ -10,13 +10,18 @@ body {
     color: var(--mainText);
 }
 
-.row {
+h1 {
     text-align: center;
+    padding: 10px;
+}
+
+.row {
     padding: 25px;
 }
 
-.container {
-    padding: 10px;
-    border-radius: 1px;
-    border: ivory;
+.col {
+    text-align: center;
+    background-color: var(--backgroundBox);
+    color: var(--bodyText);
+    border: 25px solid var(--backgroundBox);
 }

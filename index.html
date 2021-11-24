@@ -9,19 +9,21 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <h1>Going Somewhere?</h1>
 
     <div class="container">
-        <div class="row">
-             <div class="col border">
-                Going Somewhere?
-            </div>
-        </div>
-        <div class="row">
-           <div class="col border">
-               London / Mexico City / Toronto / Beijing / Sydney
-           </div>
-       </div>
     </div>
+    <form>
+     <div class="row">
+         <div class="col">
+           <input id="city-text" type="text" class="form-control" placeholder="City Name" aria-label="City Name">
+         </div>
+         <div class="col">
+           <input id="country-text" type="text" class="form-control" placeholder="Country Name" aria-label="Country Name">
+         </div>
+       </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
     
     <script src="./script.js"></script>
 </body>
