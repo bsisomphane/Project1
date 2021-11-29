@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 // pulls selection from drop down list
 let countrySelect = document.querySelector('.form-select');
@@ -41,7 +40,6 @@ let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${curre
 
 console.log(currencyApi);
 
-=======
 // Hooking into submit button to begin fetch
 let citySubmitBtn = document.querySelector('#citySubmitBtn');
 
@@ -106,16 +104,12 @@ function populateLMCard(landmarkData) {
       cityLM.appendChild(landmarkItem);
       landmarkItem.textContent = landmarkData.suggestions[2].entities[landmarkIndex].name;
     }
->>>>>>> 664334bc9ed033874ce893a29ebd54a126f3a25d
 };
 
 
 
-<<<<<<< HEAD
-=======
 // Array = queryselectorall options
 
 // Array.addEventListener("click", );
 
 // value selected option from dropdown in javascript
->>>>>>> 664334bc9ed033874ce893a29ebd54a126f3a25d
