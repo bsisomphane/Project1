@@ -1,46 +1,46 @@
 
+// pulls selection from drop down list
+let countrySelect = document.querySelector('.form-select');
+let currencyCode = countrySelect.value;
 
+console.log(countrySelect.value);
 
-let exchangeRates = `https://api.exchangerate.host/latest?base=USD&symbols=${countryCode}&amount=${amountBlank}`
-fetch(exchangeRates, {
+// currency submit buttons; returns value from currency box
+let currencySubmitBtn = document.getElementById('currencyExch');
+currencySubmitBtn.addEventListener("click", function(event){
+  console.log("test")
+    event.preventDefault();
+  currencySubmit(event);
+});
 
-})
-   .then(function (response){
-       return response.json();
-   })
-   .then(function (currencyData){
-       console.log("currency data");
-       console.log(currencyData.rates);
-   });
-
-let countryText = document.querySelector('#city-text');
-let currencySubmitBtn = document.querySelector('#currency-submit');
-
-currencySubmitBtn.addEventListener('click', currencySubmit);
 // Hooking into user input
+
 function currencySubmit () {
-    // event.preventDefault();
-    console.log("This is the searchSubmit Test");
-    let userCity = document.querySelector("#city-text").value;
-    // let weatherInCity = "Sunny"
-    if (!userCity) {
-      console.error('Please enter an amount in $USD');
+    console.log("This is the currencySubmit Test");
+    let amountBlank = document.getElementById("currency-textbox").value;
+    console.log(amountBlank)
+    if (!amountBlank) {
+      console.error('Please enter an amount in Dollars');
       return;
+
     }
-   citySearch(userCity);
+   currencyRate(amountBlank);
   }
-console.log(cityText);
-// Function call for weather api
-function citySearch (userCity) {
-    let cityCoords = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=f85be298446b14abaf2660208bb00bf7`;
-    fetch(cityCoords)
+
+  // Function call for currency api
+function currencyRate (amountBlank) {
+let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${currencyCode}&amount=${amountBlank}`;    
+    fetch(currencyApi)
       .then(function (response) {
         return response.json();
-      })
-      .then(function (fiveDayData) {
-          console.log("This is the openWeather fetch.")
-          console.log(fiveDayData);
-          oneCall(fiveDayData);
-          fiveDayWeather(fiveDayData);
-      });
-    };
+  })
+    .then(function(currencyData){
+     console.log(currencyData);
+    })
+
+console.log(currencyApi);
+
+};
+
+
+
