@@ -15,8 +15,8 @@
     <form>
         <select class="form-select" aria-label="Default select example">
             <option selected value="123">Open this select menu</option>
-            <option id="city1" value="EUR">Barcelona</option>
-            <option id="city2" value="JPY">Tokyo</option>
+            <option id="city1" value="EUR" name="Barcelona">Barcelona</option>
+            <option id="city2" value="JPY" name="Tokyo">Tokyo</option>
             <option id="city3" value="BRL">Rio</option>
             <option id="city4" value="EUR">Paris</option>
             <option id="city5" value="CNY">Beijing</option>
@@ -40,7 +40,9 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Currency Exchange</h5>
-          <p class="card-text">imagine going to another country during a pandemic smh</p>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="currency-textbox" placeholder="Dollar Amount">
+            </div>
           <button id="currencyExch" type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>

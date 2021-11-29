@@ -1,19 +1,12 @@
-
-// pulls selection from drop down list
-let countrySelect = document.querySelector('.form-select');
-let currencyCode = countrySelect.value;
-
-console.log(countrySelect.value);
-
-
-
-
-
+// let userCity = document.querySelector("#citySubmitBtn");
+let userCity = document.querySelector(".form-select");
+console.log(userCity.value);
+console.log(userCity.name);
 
 // currency submit buttons; returns value from currency box
 let currencySubmitBtn = document.getElementById('currencyExch');
 currencySubmitBtn.addEventListener("click", function(event){
-  console.log("CurrentcySbumitBtn event listener test.")
+  console.log("CurrentcySubmitBtn event listener test.")
     event.preventDefault();
   currencySubmit(event);
 });
@@ -46,6 +39,18 @@ let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${curre
 console.log(currencyApi);
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Hooking into submit button to begin fetch
 let citySubmitBtn = document.querySelector('#citySubmitBtn');
 
@@ -55,13 +60,13 @@ citySubmitBtn.addEventListener("click", function(event){
   citySearch(event);
 });
 
-let userCity = document.querySelector("#citySubmitBtn");
 
 // Hooking into user input
-function citySearch() {
+function citySearch(userCity) {
   console.log("Search button function pressed. Checking to ensure search box contains a city.")
-  // let userCity = document.querySelector(".form-select").value;
-  let userCity = "Barcelona";
+  // let userCity = document.querySelector(".form-select").textContent;
+  // let userCity = "Barcelona";
+  console.log(userCity.name);
   if (!userCity) {
     console.error('Please enter a location to search');
     return;
