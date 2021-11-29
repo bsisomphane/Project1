@@ -38,7 +38,7 @@ let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${curre
      console.log(currencyData);
     })
 
-console.log(currencyApi);
+console.log(currencyApi);}
 
 // Hooking into submit button to begin fetch
 let citySubmitBtn = document.querySelector('#citySubmitBtn');
