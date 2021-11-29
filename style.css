@@ -1,0 +1,26 @@
+:root {
+    --background: #03045e;
+    --backgroundBox: #0077b6;
+    --mainText: #90e0ef;
+    --bodyText: #caf0f8;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--mainText);
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+.select-card {
+    background-color: var(--backgroundBox);
+    padding: 20px;
+    margin: 10px 100px 20px;
+}
+
+.card {
+    color:var(--background)
+}
