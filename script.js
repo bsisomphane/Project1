@@ -1,13 +1,88 @@
-// let userCity = document.querySelector("#citySubmitBtn");
-let userCity = document.querySelector(".form-select");
-console.log(userCity.value);
-console.log(userCity.name);
+// Declaring constant variables to pass select form information
+const userCity = document.querySelector(".form-select");
+const city1 = document.querySelector("#city1");
+const city2 = document.querySelector("#city2");
+const city3 = document.querySelector("#city3");
+const city4 = document.querySelector("#city4");
+const city5 = document.querySelector("#city5");
+const city6 = document.querySelector("#city6");
+const city7 = document.querySelector("#city7");
+
+// Hooking into submit button to begin fetch
+const citySubmitBtn = document.querySelector('#citySubmitBtn');
+
+// Submit button calls citySearch function on click
+citySubmitBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  citySearch(event);
+});
+
+// Hooking into user input
+function citySearch(userCity) {
+  console.log("Search button function pressed. Checking to ensure search box contains a city.")
+  // let userCity = document.querySelector(".form-select").textContent;
+  // let userCity = "Barcelona";
+  console.log(userCity.name);
+  if (!userCity) {
+    console.error('Please enter a location to search');
+    return;
+  } else {
+    console.log(`Function citySearch executed. Value searched is ${userCity}.`);
+  }
+ rapidApiSearch(userCity);
+ console.log("rapidApiSearch called with userCity as a parameter.")
+}
+
+function rapidApiSearch (userCity) {
+  let rapidApiData = `https://hotels4.p.rapidapi.com/locations/v2/search?query=${userCity}&locale=en_US&currency=USD`
+// Fetching from rapidApiData url
+  fetch(rapidApiData, 
+    {
+    "method": "GET",
+    "headers": {
+    "x-rapidapi-host": "hotels4.p.rapidapi.com",
+    "x-rapidapi-key": "21f4c0498cmsh813bdb469f313d1p130468jsn583f4c713308"
+  }
+})
+  .then(function (response) {
+    console.log("rapidApi fetch request sent.");
+    return response.json();
+  })
+  .then(function (landmarkData) {
+    console.log("Successful fetch from rapidApi. Fetch data is stored in landmarkData");
+    console.log(landmarkData);
+    populateLMCard(landmarkData);
+  })
+}
+
+function populateLMCard(landmarkData) {
+  let cityName = document.querySelector(".city-name");
+  let cityLM = document.querySelector(".city-lm");
+  cityName.textContent = landmarkData.term;
+    // if (landmarkData.term = text.includes("Barcelona")) {
+    //   let landmarkImg = document.createElement('img');
+    //   // landmarkImg.innerHTML
+    //   cityName.appendChild(landmarkImg);
+    // }
+  console.log("City name populated in card.");
+  cityLM.textContent = "Check out the top landmarks:";
+    for (let landmarkIndex = 0; landmarkIndex < 3; landmarkIndex++) {
+      let landmarkItem = document.createElement('p');
+      cityLM.appendChild(landmarkItem);
+      landmarkItem.textContent = landmarkData.suggestions[2].entities[landmarkIndex].name;
+    }
+};
+
+
+
+
+
 
 // currency submit buttons; returns value from currency box
 let currencySubmitBtn = document.getElementById('currencyExch');
-currencySubmitBtn.addEventListener("click", function(event){
+currencySubmitBtn.addEventListener("submit", function(event){
   console.log("CurrentcySubmitBtn event listener test.")
-    event.preventDefault();
+  event.preventDefault();
   currencySubmit(event);
 });
 
@@ -50,69 +125,3 @@ console.log(currencyApi);
 
 
 
-
-// Hooking into submit button to begin fetch
-let citySubmitBtn = document.querySelector('#citySubmitBtn');
-
-// Submit button calls citySearch function on click
-citySubmitBtn.addEventListener("click", function(event){
-  event.preventDefault();
-  citySearch(event);
-});
-
-
-// Hooking into user input
-function citySearch(userCity) {
-  console.log("Search button function pressed. Checking to ensure search box contains a city.")
-  // let userCity = document.querySelector(".form-select").textContent;
-  // let userCity = "Barcelona";
-  console.log(userCity.name);
-  if (!userCity) {
-    console.error('Please enter a location to search');
-    return;
-  } else {
-    console.log(`Function citySearch executed. Value searched is ${userCity}.`);
-  }
- rapidApiSearch(userCity);
- console.log("rapidApiSearch called with userCity as a parameter.")
-}
-
-function rapidApiSearch (userCity) {
-  let rapidApiData = `https://hotels4.p.rapidapi.com/locations/v2/search?query=${userCity}&locale=en_US&currency=USD`
-// Fetching from rapidApiData url
-  fetch(rapidApiData, 
-    {
-    "method": "GET",
-	  "headers": {
-		"x-rapidapi-host": "hotels4.p.rapidapi.com",
-		"x-rapidapi-key": "21f4c0498cmsh813bdb469f313d1p130468jsn583f4c713308"
-	}
-})
-  .then(function (response) {
-    console.log("rapidApi fetch request sent.");
-    return response.json();
-  })
-  .then(function (landmarkData) {
-    console.log("Successful fetch from rapidApi. Fetch data is stored in landmarkData");
-    console.log(landmarkData);
-    populateLMCard(landmarkData);
-  })
-}
-
-function populateLMCard(landmarkData) {
-  let cityName = document.querySelector(".city-name");
-  let cityLM = document.querySelector(".city-lm");
-  cityName.textContent = landmarkData.term;
-    // if (landmarkData.term = text.includes("Barcelona")) {
-    //   let landmarkImg = document.createElement('img');
-    //   // landmarkImg.innerHTML
-    //   cityName.appendChild(landmarkImg);
-    // }
-  console.log("City name populated in card.");
-  cityLM.textContent = "Check out the top landmarks:";
-    for (let landmarkIndex = 0; landmarkIndex < 3; landmarkIndex++) {
-      let landmarkItem = document.createElement('p');
-      cityLM.appendChild(landmarkItem);
-      landmarkItem.textContent = landmarkData.suggestions[2].entities[landmarkIndex].name;
-    }
-};
