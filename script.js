@@ -123,7 +123,7 @@ let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}
 
 function populateCECard(currencyData, userAmount, code) {
   let currencyCompare = document.querySelector("#currency-compare");
-  currencyCompare.textContent = userAmount + " USD is worth approximately " + Object.keys(currencyData.rates)[0].[0] + code + " in this city.";
+  currencyCompare.textContent = userAmount + " USD is worth approximately " + Math.floor(currencyData.rates[Object.keys(currencyData.rates)[0]]) + " " + code + " in this city.";
     console.log(userAmount);
     console.log("Currency populated in card.");
 };
