@@ -1,21 +1,3 @@
-// Declaring constant variables to pass select form information
-// let currencyCode = document.querySelector(".form-select");
-// console.log(currencyCode);
-// let newCurrencyCode = currencyCode.toString();
-
-
-
-// console.log(currencyCode.getAttribute(class));
-// console.log(newCurrencyCode);
-
-// const city1 = document.querySelector("#city1");
-// const city2 = document.querySelector("#city2");
-// const city3 = document.querySelector("#city3");
-// const city4 = document.querySelector("#city4");
-// const city5 = document.querySelector("#city5");
-// const city6 = document.querySelector("#city6");
-// const city7 = document.querySelector("#city7");
-
 // Hooking into submit button to begin fetch
 const citySubmitBtn = document.querySelector('#citySubmitBtn');
 
@@ -95,40 +77,42 @@ function populateLMCard(landmarkData) {
   // currencySubmitBtn calls currencySubmit function on click
   currencySubmitBtn.addEventListener("click", function(event){
     event.preventDefault();
-    let currency = document.querySelector(".form-select").value;
-    console.log(currency);
-    currencySubmit(currency);
+    currencySubmit();
   });
 
   // Hooking into user input
   
-  function currencySubmit(currency) {
-    console.log("This is the currencySubmit Test");
-    let amountBlank = document.getElementById("currency-textbox").value;
-    console.log(amountBlank)
-    if (!amountBlank) {
+  function currencySubmit() {
+    console.log("currencySubmit called. User has submitted an amount.");
+    let userAmount = document.getElementById("currency-textbox").value;
+    console.log("User amount is " + userAmount + " USD.")
+    if (!userAmount) {
       console.error('Please enter an amount in Dollars');
       return;
-      
     }
-    currencyRate(amountBlank);
-  }
-  
-  // Defining code as the country's currency code.
-  
-  let citySelection = document.querySelector("#citySelect");
-    
-  citySelection.onchange = function(event){
-    let code = event.target.options[event.target.selectedIndex].dataset.code;
-    console.log("Country code: " + code);
-    return code;
+    console.log("currencyCompare called with userAmount passed as parameter.");
+    currencyCompare(userAmount);
   };
 
-  console.log(code);
+  let citySelection = document.querySelector("#citySelect");
+  citySelection.onchange = function(event){
+      let code = event.target.options[event.target.selectedIndex].dataset.code;
+      console.log("Country code: " + code);
+    };
+
   // Function call for currency api
-function currencyRate (amountBlank) {
-  
-let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}&amount=${amountBlank}`;    
+function currencyRate (code, userAmount) {
+    citySelection.onchange = function(event){
+    let code = event.target.options[event.target.selectedIndex].dataset.code;
+    console.log("Country code: " + code);
+  };
+  console.log(code);
+  console.log(userAmount);
+
+
+
+
+// let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}&amount=${userAmount}`;    
     fetch(currencyApi)
       .then(function (response) {
         return response.json();
