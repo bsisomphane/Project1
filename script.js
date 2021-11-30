@@ -5,6 +5,7 @@ const citySubmitBtn = document.querySelector('#citySubmitBtn');
 citySubmitBtn.addEventListener("click", function(event){
   event.preventDefault();
   let userCity = document.querySelector(".form-select").value;
+  addHistory(userCity);
   citySearch(userCity);
 });
 
@@ -129,6 +130,17 @@ function populateCECard(currencyData, userAmount, code) {
 };
 
 
+let cityHistory = {city: []};
 
+function onLoad() {
+  if(localStorage.getItem('history')) {
+    cityHistory = JSON.parse(localStorage.getItem('history'));
+  }
+}
+
+function addHistory(dataToSave) {
+  cityHistory.city.push(dataToSave);
+  localStorage.setItem('history',JSON.stringify(cityHistory));
+}
 
 
