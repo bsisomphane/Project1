@@ -54,7 +54,8 @@ function populateLMCard(landmarkData) {
     //   cityName.appendChild(landmarkImg);
     // }
     console.log("City name populated in card.");
-    cityLM.textContent = "Check out the top landmarks:";
+    cityLM.textContent = "Check out the top places to visit in " + landmarkData.term + "!";
+
     for (let landmarkIndex = 0; landmarkIndex < 3; landmarkIndex++) {
       let landmarkItem = document.createElement('p');
       cityLM.appendChild(landmarkItem);
@@ -73,6 +74,7 @@ function populateLMCard(landmarkData) {
 
 
   const currencySubmitBtn = document.querySelector("#currencyExch");
+  let code;
   
   // currencySubmitBtn calls currencySubmit function on click
   currencySubmitBtn.addEventListener("click", function(event){
@@ -81,6 +83,12 @@ function populateLMCard(landmarkData) {
   });
 
   // Hooking into user input
+
+  let citySelection = document.querySelector("#citySelect");
+  citySelection.onchange = function(event){
+      code = event.target.options[event.target.selectedIndex].dataset.code;
+      console.log("Country code: " + code);
+    };
   
   function currencySubmit() {
     console.log("currencySubmit called. User has submitted an amount.");
@@ -90,42 +98,35 @@ function populateLMCard(landmarkData) {
       console.error('Please enter an amount in Dollars');
       return;
     }
-    console.log("currencyCompare called with userAmount passed as parameter.");
-    currencyCompare(userAmount);
+    console.log("currencyRate called with userAmount passed as parameter.");
+    console.log(code);
+    currencyRate(code, userAmount);
   };
 
-  let citySelection = document.querySelector("#citySelect");
-  citySelection.onchange = function(event){
-      let code = event.target.options[event.target.selectedIndex].dataset.code;
-      console.log("Country code: " + code);
-    };
 
   // Function call for currency api
 function currencyRate (code, userAmount) {
-    citySelection.onchange = function(event){
-    let code = event.target.options[event.target.selectedIndex].dataset.code;
-    console.log("Country code: " + code);
-  };
   console.log(code);
   console.log(userAmount);
 
-// let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}&amount=${userAmount}`;    
-    fetch(currencyApi)
+let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}&amount=${userAmount}`;    
+    return fetch(currencyApi)
       .then(function (response) {
         return response.json();
   })
-    .then(function(currencyData){
-     console.log(currencyData);
-    })
-
-console.log(currencyApi);
+      .then(function (currencyData) {
+      console.log("Successful fetch from echangerateAPI. Fetch data is stored in currencyData");
+      console.log(currencyData);
+      populateCECard(currencyData, userAmount, code);
+  })
 };
 
-
-
-
-
-
+function populateCECard(currencyData, userAmount, code) {
+  let currencyCompare = document.querySelector("#currency-compare");
+  currencyCompare.textContent = userAmount + " USD is worth approximately " + Math.floor(currencyData.rates[Object.keys(currencyData.rates)[0]]) + " " + code + " in this city.";
+    console.log(userAmount);
+    console.log("Currency populated in card.");
+};
 
 
 

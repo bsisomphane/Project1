@@ -15,6 +15,10 @@ h1 {
     padding: 10px;
 }
 
+p {
+    padding: 5px;
+}
+
 .select-card {
     background-color: var(--backgroundBox);
     padding: 20px;
