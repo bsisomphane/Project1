@@ -16,7 +16,7 @@ const citySubmitBtn = document.querySelector('#citySubmitBtn');
 citySubmitBtn.addEventListener("click", function(event){
   event.preventDefault();
   console.log(userCity);
-  citySearch(event);
+  citySearch(userCity);
 });
 
 // citySearch passes user input, userCity, as parameter
