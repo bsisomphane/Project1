@@ -109,9 +109,6 @@ function currencyRate (code, userAmount) {
   console.log(code);
   console.log(userAmount);
 
-
-
-
 // let currencyApi = `https://api.exchangerate.host/latest?base=USD&symbols=${code}&amount=${userAmount}`;    
     fetch(currencyApi)
       .then(function (response) {
