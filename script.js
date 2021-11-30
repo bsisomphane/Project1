@@ -1,5 +1,6 @@
 // Declaring constant variables to pass select form information
 const userCity = document.querySelector(".form-select");
+// const userCitySelect = document.querySelector("")
 const city1 = document.querySelector("#city1");
 const city2 = document.querySelector("#city2");
 const city3 = document.querySelector("#city3");
@@ -7,6 +8,8 @@ const city4 = document.querySelector("#city4");
 const city5 = document.querySelector("#city5");
 const city6 = document.querySelector("#city6");
 const city7 = document.querySelector("#city7");
+console.log(userCity);
+console.log(userCity.value);
 
 // Hooking into submit button to begin fetch
 const citySubmitBtn = document.querySelector('#citySubmitBtn');
@@ -14,10 +17,11 @@ const citySubmitBtn = document.querySelector('#citySubmitBtn');
 // Submit button calls citySearch function on click
 citySubmitBtn.addEventListener("click", function(event){
   event.preventDefault();
+  console.log(userCity);
   citySearch(event);
 });
 
-// Hooking into user input
+// citySearch passes user input, userCity, as parameter
 function citySearch(userCity) {
   console.log("Search button function pressed. Checking to ensure search box contains a city.")
   // let userCity = document.querySelector(".form-select").textContent;
