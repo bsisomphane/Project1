@@ -13,15 +13,16 @@
 
     <div class="select-card">
     <form>
-        <select class="form-select" aria-label="Default select example">
-            <option selected value="123">Open this select menu</option>
-            <option id="city1" value="EUR">Barcelona</option>
-            <option id="city2" value="JPY">Tokyo</option>
-            <option id="city3" value="BRL">Rio</option>
-            <option id="city4" value="EUR">Paris</option>
-            <option id="city5" value="CNY">Beijing</option>
-            <option id="city6" value="AUD">Sydney</option>
-            <option id="city7" value="CAD">Vancouver</option>
+      <label for="citySelect">Select a city:</label>
+        <select class="form-select" id="citySelect" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option data-code="EUR" label="Barcelona">Barcelona</option>
+            <option data-code="JPY" label="Tokyo">Tokyo</option>
+            <option data-code="BRL" label="Rio de Janeiro">Rio de Janeiro</option>
+            <option data-code="EUR" label="Paris">Paris</option>
+            <option data-code="CNY" label="Beijing">Beijing</option>
+            <option data-code="AUD" label="Sydney">Sydney</option>
+            <option data-code="CAD" label="Vancouver">Vancouver</option>
           </select>
      <button id="citySubmitBtn" type="submit" class="btn btn-primary">Submit</button>
    </form>
