@@ -5,7 +5,8 @@ const citySubmitBtn = document.querySelector('#citySubmitBtn');
 citySubmitBtn.addEventListener("click", function(event){
   event.preventDefault();
   let userCity = document.querySelector(".form-select").value;
-  addHistory(userCity);
+  // addHistory(userCity);
+  // populateHistory();
   citySearch(userCity);
 });
 
@@ -130,17 +131,40 @@ function populateCECard(currencyData, userAmount, code) {
 };
 
 
-let cityHistory = {city: []};
-
-function onLoad() {
-  if(localStorage.getItem('history')) {
-    cityHistory = JSON.parse(localStorage.getItem('history'));
-  }
-}
-
-function addHistory(dataToSave) {
-  cityHistory.city.push(dataToSave);
-  localStorage.setItem('history',JSON.stringify(cityHistory));
-}
 
 
+
+// Localstorage skeleton TBA
+
+// let cityHistory = {city: []};
+
+// function onLoad() {
+//   if(localStorage.getItem('history')) {
+//     cityHistory = JSON.parse(localStorage.getItem('history'));
+//   }
+// }
+
+// function addHistory(dataToSave) {
+//   cityHistory.city.push(dataToSave);
+//   localStorage.setItem('history',JSON.stringify(cityHistory));
+//   if (localStorage.length() > 3) {
+//     let retrievedHistory1 = JSON.parse(localStorage.getItem('history'));
+//     retrievedHistory1.city.pop()
+//     localStorage.setItem('history',JSON.stringify(cityHistory));
+//     let retrievedHistory2 = JSON.parse(localStorage.getItem('history'));
+//     console.log(retrievedHistory2);
+//   }
+// }
+
+// let retrievedHistory1 = JSON.parse(localStorage.getItem('history'));
+// retrievedHistory1.city.pop()
+// localStorage.setItem('history',JSON.stringify(cityHistory));
+// let retrievedHistory2 = JSON.parse(localStorage.getItem('history'));
+// console.log(retrievedHistory2);
+
+// function populateHistory() {
+//     console.log("History populated.");
+//       document.querySelector("#his1").textContent = retrievedHistory2.city[0];
+//       document.querySelector("#his2").textContent = retrievedHistory2.city[1];
+//       document.querySelector("#his3").textContent = retrievedHistory2.city[2];
+//     };
