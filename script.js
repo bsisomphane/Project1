@@ -1,5 +1,4 @@
 // Declaring constant variables to pass select form information
-const userCity = document.querySelector(".form-select").value;
 
 const city1 = document.querySelector("#city1");
 const city2 = document.querySelector("#city2");
@@ -15,6 +14,7 @@ const citySubmitBtn = document.querySelector('#citySubmitBtn');
 // Submit button calls citySearch function on click
 citySubmitBtn.addEventListener("click", function(event){
   event.preventDefault();
+  let userCity = document.querySelector(".form-select").value;
   citySearch(userCity);
 });
 
@@ -30,6 +30,7 @@ function citySearch(userCity) {
  rapidApiSearch(userCity);
  console.log("rapidApiSearch called with userCity as a parameter.")
 }
+
 
 function rapidApiSearch (userCity) {
   let rapidApiData = `https://hotels4.p.rapidapi.com/locations/v2/search?query=${userCity}&locale=en_US&currency=USD`
